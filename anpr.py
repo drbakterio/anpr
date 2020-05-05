@@ -4,11 +4,11 @@ from time import sleep
 import pushover
 
 # Pushover settings
-PUSHOVER_USER_KEY = "<REPLACE WITH USER KEY>"
-PUSHOVER_APP_TOKEN = "<REPLACE WITH APP TOKEN>"
+PUSHOVER_USER_KEY = "<u5o7snsvmy855xdux6yy3vchenqf4j>"
+PUSHOVER_APP_TOKEN = "<a6theukefh95sjz3w1h91x68u8igem>"
 
 # 'gb' means we want to recognise UK plates, many others are available
-alpr = Alpr("gb", "/etc/openalpr/openalpr.conf",
+alpr = Alpr("no", "/etc/openalpr/openalpr.conf",
             "/usr/share/openalpr/runtime_data")
 camera = PiCamera()
 pushover.init(PUSHOVER_APP_TOKEN)
@@ -47,8 +47,8 @@ try:
                     number_plate + " has arrived", title="Driveway")
             elif number_plate != last_seen:
                 pushover.Client(PUSHOVER_USER_KEY).send_message(
-                    number_plate + " arrived  and " + last_seen + " left",
-                    title="Driveway")
+                    number_plate + " ankommet  and " + last_seen + " reist",
+                    title="gata")
 
             last_seen = number_plate
 
